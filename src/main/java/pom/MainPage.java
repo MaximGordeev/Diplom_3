@@ -1,5 +1,6 @@
 package pom;
 
+import io.qameta.allure.Step;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 public class MainPage {
 
     private final String url = "https://stellarburgers.nomoreparties.site/";
-    private final By loginToAccount = By.xpath(".//*[contains(text(),'Войти')]");// Локатор кнопки Войти
+    private final By loginToAccount = By.xpath(".//*[contains(text(),'Войти в аккаунт')]");// Локатор кнопки Войти
     private final By personalAccount = By.xpath(".//p[contains(text(),'Личный Кабинет')]"); //  Локатор кнопки Личный кабинет
     private final By constructor = By.xpath(".//p[contains(text(),'Конструктор')]"); // Локатор Конструктора
     private final By sauces = By.xpath(".//span[contains(text(),'Соусы')]"); // Локатор соусов
@@ -32,24 +33,29 @@ public class MainPage {
         driver.get(url);
     }
 
+    @Step("Нажимаем кнопку войти в аккаунт")
     public void clickLogin() { //клик на Войти в аккаунт
         driver.findElement(loginToAccount).click();
     }
 
+    @Step("Нажимаем на кнопку ЛК")
     public void clickPersonalAccount() { //клик на ЛК
         driver.findElement(personalAccount).click();
     }
 
+    @Step("Нажимаем на ЛОГО")
     public void clickStellarBurger() {
         driver.findElement(stellarBurger).click();
     }
 
+    @Step("Проверяем что находимся в Конструкторе")
     public void checkStellarBurger() {
         String actualText = driver.findElement(constructBurger).getText();
         String expected = "Соберите бургер";
         Assert.assertEquals(expected, actualText);
     }
 
+    @Step("Нажимаем на кнопку Конструктор")
     public void clickConstructorButton() {
         driver.findElement(constructorButton).click();
         String actualText = driver.findElement(constructBurger).getText();
@@ -57,12 +63,14 @@ public class MainPage {
         Assert.assertEquals(expected, actualText);
     }
 
+    @Step("Проверяем что открылась страница авторизации")
     public void checkEnterPageOpen() {
         String actualText = driver.findElement(enterText).getText();
         String expected = "Вход";
         Assert.assertEquals(expected, actualText);
     }
 
+    @Step("Проверяем Соусы")
     public void checkSauces() {
         driver.findElement(constructor).click();
         driver.findElement(sauces).click();
@@ -72,6 +80,7 @@ public class MainPage {
         Assert.assertEquals(expected, actualText);
     }
 
+    @Step("Проверяем Булки")
     public void checkBuns() {
         driver.findElement(constructor).click();
         driver.findElement(buns);
@@ -80,6 +89,7 @@ public class MainPage {
         Assert.assertEquals(expected, actualText);
     }
 
+    @Step("Проверяем Начинки")
     public void checkFillings() {
         driver.findElement(constructor).click();
         driver.findElement(fillings).click();

@@ -1,4 +1,4 @@
-package burgersTests;
+package site.nomoreparties.stellarburgers.tests;
 
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Rule;

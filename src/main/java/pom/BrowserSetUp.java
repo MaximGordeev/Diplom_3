@@ -1,6 +1,7 @@
 package pom;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.Step;
 import org.junit.rules.ExternalResource;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -32,6 +33,7 @@ public class BrowserSetUp extends ExternalResource {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     }
     @Override
+    @Step("Закрываем браузер")
     protected void after() {
         driver.quit();
     }

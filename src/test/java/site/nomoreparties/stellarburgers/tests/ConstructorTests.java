@@ -1,4 +1,4 @@
-package burgersTests;
+package site.nomoreparties.stellarburgers.tests;
 
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Rule;
@@ -54,7 +54,7 @@ public class ConstructorTests {
     }
 
     @Test
-    @DisplayName("провера перехода через кнопку Войти в аккаунт")
+    @DisplayName("Проверка перехода через кнопку Войти в аккаунт")
     public void checkLoginToAccount() {
         MainPage mainPage = new MainPage(browserRule.getDriver());
         mainPage.open();
@@ -64,7 +64,7 @@ public class ConstructorTests {
     }
 
     @Test
-    @DisplayName("провера перехода через кнопку Личный кабинет")
+    @DisplayName("Проверка перехода через кнопку Личный кабинет")
     public void checkPersonalAccount() {
         MainPage mainPage = new MainPage(browserRule.getDriver());
         mainPage.open();

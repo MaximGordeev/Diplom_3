@@ -1,5 +1,6 @@
 package pom;
 
+import io.qameta.allure.Step;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -40,14 +41,17 @@ public class UserRegistrationPage {
         driver.get(url);
     }
 
+    @Step("Нажимаем кнопку войти")
     public void clickLogin() { //клик на Cоусы
         driver.findElement(loginAccount).click();
     }
 
+    @Step("Нажимаем кнопку личный кабинет")
     public void clickPersonalAccount() { //клик на Личный кабинет
         driver.findElement(personalAccount).click();
     }
 
+    @Step("Проверяем регистрацию")
     public void checkRegistration() throws InterruptedException {
         driver.findElement(registration).click();
         driver.findElement(userName).sendKeys(randomName);
@@ -60,6 +64,7 @@ public class UserRegistrationPage {
         driver.findElement(enter).click();
     }
 
+    @Step("Проверяем регистрацию с маленьким паролем")
     public void checkWrongPasswordRegistration() {
         driver.findElement(registration).click();
         driver.findElement(userName).sendKeys(randomName);
@@ -71,10 +76,12 @@ public class UserRegistrationPage {
         Assert.assertEquals(expected, text);
     }
 
+    @Step("Нажимаем кнопку востановить пароль")
     public void clickUpdatePassword() {
         driver.findElement(updatePassword).click();
     }
 
+    @Step("Заполняем поля для востановления пароля")
     public void sendEmailUpdatePassword() {
         driver.findElement(emailUpdate).sendKeys(randomEmail);
         driver.findElement(recover).click();
@@ -83,16 +90,19 @@ public class UserRegistrationPage {
         Assert.assertEquals(expected, text);
     }
 
+    @Step("Заполняем емаил")
     public void changeEmail() {
         driver.findElement(changeEmail).sendKeys(randomPassword);
         driver.findElement(code).sendKeys("blabla");
         driver.findElement(save).click();
     }
 
+    @Step("Выходим из ЛК")
     public void clickLogOut() {
         driver.findElement(logOutButton).click();
     }
 
+    @Step("Проверяем что вышли")
     public void checkSuccessfulLogOut() {
         String centralLoginBtn = driver.findElement(centralLoginButton).getText();
         String expectedText = "Вход";
